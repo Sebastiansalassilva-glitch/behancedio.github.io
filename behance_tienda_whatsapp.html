@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BEHANCE — ropa deportiva para tu mejor versión.">
+<title>BEHANCE | Ropa deportiva</title>
+<style>
+:root{--bg:#090909;--panel:#141414;--line:#2b2b2b;--muted:#aaa;--white:#f6f6f6;--accent:#d8ff3e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,Helvetica,sans-serif}button,a,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.topbar{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid var(--line);position:sticky;top:0;background:#090909ed;backdrop-filter:blur(12px);z-index:5}
+.logo{font-weight:950;letter-spacing:3px;font-size:25px}.nav{display:flex;gap:28px;font-size:13px;color:#ddd}.nav a:hover{color:var(--accent)}.actions{display:flex;gap:15px;align-items:center}.iconbtn{border:1px solid var(--line);background:transparent;color:white;border-radius:999px;padding:9px 13px}.cart-count{background:var(--accent);color:#111;border-radius:50%;padding:2px 6px;font-size:11px;font-weight:bold;margin-left:4px}
+.hero{min-height:440px;display:flex;align-items:center;padding:55px 7%;background:linear-gradient(90deg,#050505 0%,#050505ee 35%,#05050544 100%),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85') center 44%/cover}
+.kicker{font-size:11px;letter-spacing:5px;color:#ccc;text-transform:uppercase}.hero h1{font-size:clamp(44px,8vw,88px);line-height:.95;margin:18px 0 12px;font-weight:950;letter-spacing:-3px;font-style:italic}.hero p{color:#d1d1d1;letter-spacing:2px;font-size:14px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border:0;background:var(--white);color:#111;font-weight:800;font-size:12px;letter-spacing:1px;margin-top:18px}.btn:hover{background:var(--accent)}.section{padding:45px 5%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}.section h2{font-size:27px;letter-spacing:1px;margin:0;font-style:italic}.sub{color:var(--muted);font-size:13px;margin-top:8px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.category{height:135px;position:relative;display:flex;align-items:end;padding:16px;background-size:cover;background-position:center;border:1px solid #333;overflow:hidden}.category:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#000d,#0002)}.category span{position:relative;font-weight:800;letter-spacing:1px;font-size:13px}.category:hover{border-color:var(--accent)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.filter{padding:9px 15px;border:1px solid #444;background:transparent;color:#ddd;border-radius:999px;font-size:12px}.filter.active,.filter:hover{background:var(--white);color:#111;border-color:var(--white)}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.product{border:1px solid var(--line);background:#101010;min-width:0}.photo{height:260px;background:#1b1b1b;overflow:hidden;position:relative}.photo img{width:100%;height:100%;object-fit:cover;transition:transform .3s;display:block}.product:hover .photo img{transform:scale(1.04)}.tag{position:absolute;top:10px;left:10px;background:var(--accent);color:#111;font-size:10px;font-weight:900;padding:6px 8px}.pbody{padding:14px}.pname{font-size:14px;font-weight:700}.desc{font-size:11px;color:#999;margin-top:5px}.price{font-size:18px;font-weight:900;margin:13px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:8px}.size{background:#111;border:1px solid #444;color:white;padding:8px;max-width:100%;font-size:12px}.add{width:100%;margin-top:12px;background:transparent;color:white;border:1px solid #666;padding:11px;font-size:11px;font-weight:800;letter-spacing:.6px}.add:hover{background:var(--accent);border-color:var(--accent);color:#111}
+.perks{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);padding:25px 5%;gap:20px}.perk{font-size:12px;font-weight:800;letter-spacing:.5px}.perk small{display:block;color:#999;font-size:11px;font-weight:400;margin-top:6px;letter-spacing:0}
+.brandstory{padding:55px 7%;background:linear-gradient(90deg,#050505 0%,#050505e8 45%,#0005 100%),url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=85') center/cover}.brandstory h2{font-size:34px;font-style:italic;margin:0 0 10px}.brandstory p{color:#ccc;max-width:450px;line-height:1.6;font-size:14px}
+footer{padding:24px 5%;display:flex;justify-content:space-between;gap:20px;align-items:center;color:#999;font-size:11px;border-top:1px solid var(--line)}footer strong{color:white;letter-spacing:2px;font-size:17px}
+.drawer-backdrop{position:fixed;inset:0;background:#0009;z-index:9;display:none}.drawer{position:fixed;right:0;top:0;height:100dvh;width:min(430px,100%);background:#0d0d0d;border-left:1px solid #333;z-index:10;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column}.drawer.open{transform:translateX(0)}.drawer-backdrop.open{display:block}.drawer-head{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.drawer-head h3{margin:0;font-size:15px;letter-spacing:1px}.close{background:transparent;color:white;border:0;font-size:25px}.cart-items{padding:10px 20px;overflow:auto;flex:1}.cart-item{display:grid;grid-template-columns:76px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-item img{width:76px;height:88px;object-fit:cover}.cart-item strong{font-size:12px}.cart-item small{display:block;color:#999;margin:5px 0 10px}.qty{display:flex;align-items:center;gap:12px}.qty button{background:#222;color:white;border:1px solid #444;width:25px;height:25px}.remove{background:transparent;border:0;color:#aaa}.cart-foot{padding:20px;border-top:1px solid var(--line)}.totalrow{display:flex;justify-content:space-between;margin:9px 0;color:#ccc;font-size:13px}.totalrow.final{border-top:1px solid #444;padding-top:15px;color:white;font-size:17px;font-weight:900}.checkout{width:100%;padding:15px;background:#25d366;color:#07140b;border:0;font-weight:900;font-size:12px;letter-spacing:.4px;margin-top:12px}.checkout:hover{filter:brightness(1.07)}.note{font-size:10px;color:#888;line-height:1.5;margin-top:10px}.empty{text-align:center;color:#999;padding:40px 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#f5f5f5;color:#111;padding:12px 18px;z-index:20;font-size:12px;font-weight:bold;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.nav{gap:14px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:240px}.categories{grid-template-columns:repeat(3,1fr)}.perks{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.topbar{height:62px;padding:0 4%}.logo{font-size:21px}.nav{display:none}.hero{min-height:380px;padding:35px 6%;background-position:58% center}.hero h1{letter-spacing:-2px}.section{padding:32px 4%}.section h2{font-size:23px}.categories{grid-template-columns:repeat(2,1fr)}.category{height:110px}.products{gap:9px}.photo{height:190px}.pbody{padding:10px}.pname{font-size:12px}.price{font-size:16px}.size{padding:7px}.add{font-size:10px;padding:10px 4px}.perks{padding:22px 4%;gap:18px}.brandstory{padding:40px 6%}.brandstory h2{font-size:28px}footer{flex-wrap:wrap} }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#inicio" aria-label="BEHANCE inicio">BEHANCE</a>
+  <nav class="nav"><a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#productos">Colección</a><a href="#nosotros">Nosotros</a></nav>
+  <div class="actions"><button class="iconbtn" onclick="document.querySelector('#productos').scrollIntoView()">⌕</button><button class="iconbtn" onclick="openCart()">Carrito <span class="cart-count" id="cartCount">0</span></button></div>
+</header>
+<main>
+<section class="hero" id="inicio"><div><div class="kicker">Rendimiento · Estilo · Disciplina</div><h1>BEHANCE</h1><p>ROPA DEPORTIVA PARA TU MEJOR VERSIÓN</p><a class="btn" href="#productos">VER PRODUCTOS →</a></div></section>
+<section class="section">
+  <div class="section-head"><div><h2>ENCUENTRA TU ESTILO</h2><div class="sub">Piezas esenciales para entrenar y vivir.</div></div></div>
+  <div class="categories">
+    <a class="category" href="#productos" onclick="setFilter('Playeras')" style="background-image:url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80')"><span>PLAYERAS ↗</span></a>
+    <a class="category" href="#productos" onclick="setFilter('Shorts')" style="background-image:url('https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80')"><span>SHORTS ↗</span></a>
+    <a class="category" href="#productos" onclick="setFilter('Pants')" style="background-image:url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=500&q=80')"><span>PANTS ↗</span></a>
+    <a class="category" href="#productos" onclick="setFilter('Sudaderas')" style="background-image:url('https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80')"><span>SUDADERAS ↗</span></a>
+    <a class="category" href="#productos" onclick="setFilter('Chaquetas')" style="background-image:url('behance_productos/chaqueta_negra.jpeg')"><span>CHAQUETAS ↗</span></a>
+  </div>
+</section>
+<section class="section" id="productos">
+  <div class="section-head"><div><h2>PRODUCTOS DESTACADOS</h2><div class="sub">Diseño funcional. Actitud BEHANCE.</div></div><span class="sub" id="resultCount">6 productos</span></div>
+  <div class="filters" id="filters"><button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Playeras">Playeras</button><button class="filter" data-filter="Shorts">Shorts</button><button class="filter" data-filter="Pants">Pants</button><button class="filter" data-filter="Sudaderas">Sudaderas</button><button class="filter" data-filter="Chaquetas">Chaquetas</button></div>
+  <div class="products" id="productGrid"></div>
+</section>
+<div class="perks"><div class="perk">↗ ENVÍOS A TODO MÉXICO<small>Opciones y costo por confirmar</small></div><div class="perk">◇ COMPRA CON CONFIANZA<small>Atención personalizada</small></div><div class="perk">□ CAMBIOS Y DEVOLUCIONES<small>Consulta las condiciones de la tienda</small></div><div class="perk">☏ ATENCIÓN PERSONALIZADA<small>Pedidos por WhatsApp</small></div></div>
+<section class="brandstory" id="nosotros"><h2>DISCIPLINA<br>EN CADA DETALLE</h2><p>Diseños funcionales, cómodos y con el estilo que te impulsa a dar más. BEHANCE es más que ropa: es un estilo de vida.</p><a class="btn" href="#productos">EXPLORA LA COLECCIÓN →</a></section>
+</main>
+<footer><strong>BEHANCE</strong><span>Inicio · Productos · Nosotros · Contacto</span><span>© <span id="year"></span> BEHANCE. Prototipo de tienda.</span></footer>
+<div class="drawer-backdrop" id="backdrop" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito de compras">
+  <div class="drawer-head"><h3>TU CARRITO (<span id="drawerCount">0</span>)</h3><button class="close" onclick="closeCart()" aria-label="Cerrar carrito">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot"><div class="totalrow"><span>Subtotal</span><strong id="subtotal">$0</strong></div><div class="totalrow"><span>Envío</span><span>Por confirmar</span></div><div class="totalrow final"><span>Total productos</span><strong id="total">$0</strong></div><button class="checkout" onclick="checkout()">☏ FINALIZAR PEDIDO POR WHATSAPP</button><div class="note">El costo de envío se confirma por WhatsApp. Este prototipo no procesa pagos en línea.</div></div>
+</aside>
+<div class="toast" id="toast"></div>
+<script>
+const WHATSAPP_NUMBER = "526621231218"; // Reemplaza por tu número con código de país; ejemplo México: 521XXXXXXXXXX
+const products = [
+ {id:1,name:"Playera deportiva negra",category:"Playeras",price:399,tag:"",desc:"Negra · Estilo minimalista",img:"behance_productos/playera_alo_negra.jpeg"},
+ {id:2,name:"Playera deportiva negra II",category:"Playeras",price:399,tag:"",desc:"Negra · Corte deportivo",img:"behance_productos/playera_alo_negra_2.jpeg"},
+ {id:3,name:"Sudadera gris claro",category:"Sudaderas",price:699,tag:"",desc:"Gris claro · Manga larga",img:"behance_productos/sudadera_gris_claro.jpeg"},
+ {id:4,name:"Sudadera gris oscuro",category:"Sudaderas",price:699,tag:"",desc:"Gris oscuro · Manga larga",img:"behance_productos/sudadera_gris_oscuro.jpeg"},
+ {id:5,name:"Sudadera beige",category:"Sudaderas",price:699,tag:"",desc:"Beige · Estilo minimalista",img:"behance_productos/sudadera_beige.jpeg"},
+ {id:6,name:"Chaqueta deportiva negra",category:"Chaquetas",price:799,tag:"",desc:"Negra · Cierre frontal",img:"behance_productos/chaqueta_negra.jpeg"},
+ {id:7,name:"Chaqueta deportiva azul",category:"Chaquetas",price:799,tag:"",desc:"Azul marino · Cierre frontal",img:"behance_productos/chaqueta_azul.jpeg"},
+ {id:8,name:"Chaqueta deportiva verde",category:"Chaquetas",price:799,tag:"",desc:"Verde · Cierre frontal",img:"behance_productos/chaqueta_verde.jpeg"}
+];
+let cart = JSON.parse(localStorage.getItem("behanceCart") || "[]").map(x=>({id:x.id,qty:x.qty}));
+let currentFilter = "Todos";
+const money = n => n.toLocaleString("es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0});
+function renderProducts(){
+ const shown=products.filter(p=>currentFilter==="Todos"||p.category===currentFilter);
+ document.getElementById("resultCount").textContent=shown.length+" productos";
+ document.getElementById("productGrid").innerHTML=shown.map(p=>`<article class="product"><div class="photo"><img loading="lazy" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.style.background='#222'">${p.tag?`<span class="tag">${p.tag}</span>`:""}</div><div class="pbody"><div class="pname">${p.name}</div><div class="desc">${p.desc}</div><div class="price">${money(p.price)}</div><button class="add" onclick="addToCart(${p.id})">＋ AGREGAR AL CARRITO</button></div></article>`).join("");
+}
+function setFilter(filter){currentFilter=filter;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===filter));renderProducts()}
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(b)setFilter(b.dataset.filter)});
+function saveCart(){localStorage.setItem("behanceCart",JSON.stringify(cart));renderCart()}
+function addToCart(id){const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id,qty:1});saveCart();showToast("Agregado al carrito");}
+function changeQty(id,delta){const item=cart.find(x=>x.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);saveCart()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);saveCart()}
+function renderCart(){
+ const count=cart.reduce((s,x)=>s+x.qty,0),subtotal=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+ document.getElementById("cartCount").textContent=count;document.getElementById("drawerCount").textContent=count;document.getElementById("subtotal").textContent=money(subtotal);document.getElementById("total").textContent=money(subtotal);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{const p=products.find(p=>p.id===x.id);return `<div class="cart-item"><img src="${p.img}" alt=""><div><strong>${p.name}</strong><small>${money(p.price)} c/u</small><div class="qty"><button onclick="changeQty(${x.id},-1)" aria-label="Reducir cantidad">−</button><span>${x.qty}</span><button onclick="changeQty(${x.id},1)" aria-label="Aumentar cantidad">+</button></div></div><button class="remove" onclick="removeItem(${x.id})" aria-label="Eliminar">⌫</button></div>`}).join(""):'<div class="empty">Tu carrito está vacío.<br><br>Encuentra tus favoritos y agrégalos aquí.</div>';
+}
+function openCart(){document.getElementById("drawer").classList.add("open");document.getElementById("backdrop").classList.add("open")}
+function closeCart(){document.getElementById("drawer").classList.remove("open");document.getElementById("backdrop").classList.remove("open")}
+function checkout(){
+ if(!cart.length){showToast("Agrega al menos un producto");return}
+ if(WHATSAPP_NUMBER.includes("X")){alert("Antes de usar pedidos reales, abre el archivo index.html y reemplaza WHATSAPP_NUMBER por tu número de WhatsApp con código de país. Ejemplo de formato: 521XXXXXXXXXX.");return}
+ const lines=cart.map(x=>{const p=products.find(p=>p.id===x.id);return `• ${p.name} | Cantidad: ${x.qty} | ${money(p.price*x.qty)}`});
+ const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+ const message=`¡Hola, BEHANCE! Quiero hacer este pedido:\n\n${lines.join("\n")}\n\nSubtotal: ${money(total)}\nEnvío: por confirmar\n\n¿Me ayudan a confirmar disponibilidad y envío?`;
+ window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank");
+}
+let toastTimer;function showToast(text){const t=document.getElementById("toast");t.textContent=text;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),1800)}
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();renderCart();
+</script>
+</body></html>
